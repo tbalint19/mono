@@ -1,0 +1,10 @@
+{
+  "name": "monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "executables/*",
+    "libraries/*",
+    "models/*"
+  ]
+}
