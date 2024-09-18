@@ -1,0 +1,9 @@
+{
+  "name": "database",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "devDependencies": {
+    "@types/pg": "^8.11.10",
+    "drizzle-kit": "^0.24.2"
+  }
+}

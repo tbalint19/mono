@@ -3,8 +3,18 @@
   "version": "1.0.0",
   "private": true,
   "workspaces": [
-    "executables/*",
-    "libraries/*",
-    "models/*"
-  ]
+    "executables/**",
+    "libraries/**",
+    "models/**"
+  ],
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^26.0.1",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "rollup": "^4.21.3",
+    "@types/node": "^20.11.17",
+    "tslib": "^2.7.0",
+    "tsx": "^4.7.1",
+    "typescript": "^5.6.2"
+  }
 }
