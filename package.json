@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "workspaces": [
+    "domain/**",
     "executables/**",
-    "libraries/**",
-    "models/**"
+    "modules/**"
   ],
   "devDependencies": {
     "@rollup/plugin-commonjs": "^26.0.1",
