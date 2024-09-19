@@ -1,9 +1,9 @@
 import { serve } from '@hono/node-server'
 import { Hono } from 'hono'
-import { add } from '../../../../packages/demo/out'
-import type { AddResult } from '../../../../packages/demo/out'
-import { users } from '../../../../packages/models/out'
-import type { UserData } from '../../../../packages/models/out'
+import { add } from 'demo'
+import type { AddResult } from 'demo'
+import { users } from 'models'
+import type { UserData } from 'models'
 
 const app = new Hono()
 
