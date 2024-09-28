@@ -12,7 +12,10 @@ export const authContract = c.router({
     responses: {
       200: z.object({
         token: z.string()
-      })
+      }),
+      400: z.object({
+        code: z.string()
+      }),
     }
   }
 })

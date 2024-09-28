@@ -1,0 +1,13 @@
+{
+  "name": "@utils/fetch",
+  "private": true,
+  "version": "1.0.0",
+  "main": "out/index.js",
+  "types": "out/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "zod": "^3.23.8"
+  }
+}
