@@ -1,3 +1,4 @@
+import ENVIRONMENT from './environment'
 import { createExpressEndpoints, initServer } from '@ts-rest/express'
 import express from 'express'
 import { adminContract } from '@domain/contracts'
@@ -9,9 +10,16 @@ const server = express()
 server.use(express.json())
 
 const { authMiddleware, authRouter } = createAuthMiddleware({
-  provider: { clientId: "", clientSecret: "", redirectUri: "" },
-  jwt: { secret: "", expire: "" }
-}, async (idTokenPayload) => ({ id: "" }))
+  provider: {
+    clientId: ENVIRONMENT.CLIENT_ID,
+    clientSecret: ENVIRONMENT.CLIENT_SECRET,
+    redirectUri: ENVIRONMENT.REDIRECT_URI,
+  },
+  jwt: {
+    secret: ENVIRONMENT.JWT_SECRET,
+    expire: ENVIRONMENT.JW_EXPIRATION,
+  }
+}, async (idTokenPayload) => ({ id: idTokenPayload.sub }))
 
 server.use(authMiddleware)
 

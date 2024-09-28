@@ -24,7 +24,7 @@ export const safeFetch = async <Schema extends z.ZodTypeAny>(
   try {
     const response = await fetch(...params)
     if (response.status > 299)
-      return { status: response.status, error: "NETWORK ERROR" , success: false }
+      return { status: response.status, error: "UNSUCCESSFUL REQUEST", success: false }
 
     const rawData = await response.json()
     const result = schema.safeParse(rawData)
@@ -33,6 +33,6 @@ export const safeFetch = async <Schema extends z.ZodTypeAny>(
 
     return { status: response.status, data: result.data, success: true }
   } catch (error) {
-    return { status: null, error, success: false }
+    return { status: null, error: "NETWORK ERROR", success: false }
   }
 }

@@ -46,8 +46,6 @@ export const jwt = <const Schema extends z.ZodTypeAny>(schema: Schema) => {
 
   return {
     configure,
-    sign: safeSign,
-    verify: safeVerify,
     decode: safeDecode,
   }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "@utils/fetch",
+  "name": "@utils/safe-fetch",
   "private": true,
   "version": "1.0.0",
   "main": "out/index.js",

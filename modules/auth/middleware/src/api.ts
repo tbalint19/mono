@@ -1,5 +1,5 @@
 import { jwt } from '@utils/jwt'
-import { safeFetch } from '@utils/fetch'
+import { safeFetch } from '@utils/safe-fetch'
 import { z } from 'zod'
 
 export type ProviderConfig = {

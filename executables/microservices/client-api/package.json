@@ -3,7 +3,8 @@
   "type": "module",
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "start": "node --env-file=.env out/index.cjs"
   },
   "devDependencies": {
     "@auth/middleware": "*",
