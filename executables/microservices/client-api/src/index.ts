@@ -1,8 +1,9 @@
 import { createExpressEndpoints, initServer } from '@ts-rest/express'
 import express from 'express'
-import { adminContract } from 'contracts'
-import { authMiddleware, authContract, authRouter } from 'auth-middleware'
-import { users } from 'models'
+import { adminContract } from '@domain/contracts'
+import { authContract } from '@auth/contract'
+import { authMiddleware, authRouter } from '@auth/middleware'
+import { users } from '@domain/models'
 
 const app = express()
 app.use(express.json())

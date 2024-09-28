@@ -6,6 +6,10 @@
     "build": "rollup -c"
   },
   "devDependencies": {
+    "@auth/middleware": "*",
+    "@auth/contract": "*",
+    "@domain/contracts": "*",
+    "@domain/models": "*",
     "@types/express": "^5.0.0",
     "@types/node": "^20.11.17",
     "tslib": "^2.7.0",
