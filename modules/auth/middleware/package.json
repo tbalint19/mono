@@ -1,0 +1,17 @@
+{
+  "name": "auth-middleware",
+  "version": "1.0.0",
+  "main": "out/index.js",
+  "types": "out/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@ts-rest/core": "^3.51.0",
+    "express": "^4.21.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0"
+  }
+}

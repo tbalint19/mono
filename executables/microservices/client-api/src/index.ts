@@ -1,36 +1,21 @@
-import { initTRPC } from '@trpc/server';
-import { createHTTPServer } from '@trpc/server/adapters/standalone';
+import { createExpressEndpoints, initServer } from '@ts-rest/express'
+import express from 'express'
+import { adminContract } from 'contracts'
+import { authMiddleware, authContract, authRouter } from 'auth-middleware'
 import { users } from 'models'
 
-console.log(users.id)
+const app = express()
+app.use(express.json())
+app.use(authMiddleware)
 
-/**
- * Initialization of tRPC backend
- * Should be done only once per backend!
- */
-const t = initTRPC.create();
+const server = initServer()
+const router = server.router(adminContract, {
+  createDemo: async ({ body, headers, req }) => {
+    console.log(req.user)
+    return { status: 200, body: { greeting: "" } }
+  }
+})
 
-/**
- * Export reusable router and procedure helpers
- * that can be used throughout the router
- */
-export const router = t.router;
-export const publicProcedure = t.procedure;
+createExpressEndpoints({...authContract, ...adminContract}, {...router, ...authRouter}, app)
 
-const appRouter = router({
-  userList: publicProcedure
-    .query(async () => {
-      // Retrieve users from a datasource, this is an imaginary database
-      const users = [ "alma", "korte" ]
-
-      return users;
-    }),
-});
-
-const server = createHTTPServer({
-  router: appRouter,
-});
- 
-server.listen(3000);
-
-export type AppRouter = typeof appRouter;
+app.listen(3000, () => console.log("STARTED"))
