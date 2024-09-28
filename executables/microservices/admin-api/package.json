@@ -5,14 +5,19 @@
     "dev": "tsx watch src/index.ts",
     "build": "rollup -c"
   },
-  "dependencies": {
-    "@hono/node-server": "^1.13.0",
-    "hono": "^4.6.2"
-  },
   "devDependencies": {
+    "@auth/middleware": "*",
+    "@auth/contract": "*",
+    "@domain/contracts": "*",
+    "@domain/models": "*",
+    "@types/express": "^5.0.0",
     "@types/node": "^20.11.17",
     "tslib": "^2.7.0",
     "tsx": "^4.7.1",
     "typescript": "^5.6.2"
+  },
+  "dependencies": {
+    "@ts-rest/express": "^3.51.0",
+    "express": "^4.21.0"
   }
 }
