@@ -9,6 +9,7 @@
   "devDependencies": {
     "@auth/middleware": "*",
     "@auth/contract": "*",
+    "@utils/logger": "*",
     "@domain/contracts": "*",
     "@domain/models": "*",
     "@types/express": "^5.0.0",

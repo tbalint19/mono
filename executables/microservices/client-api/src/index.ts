@@ -4,6 +4,7 @@ import express from 'express'
 import { adminContract } from '@domain/contracts'
 import { authContract } from '@auth/contract'
 import { createAuthMiddleware } from '@auth/middleware'
+import { createLogger } from '@utils/logger'
 import { users } from '@domain/models'
 
 const server = express()
@@ -20,8 +21,25 @@ const { authMiddleware, authRouter } = createAuthMiddleware({
     expire: ENVIRONMENT.JW_EXPIRATION,
   }
 }, async (idTokenPayload) => ({ id: idTokenPayload.sub }))
-
 server.use(authMiddleware)
+
+const log = createLogger({
+  remote: {
+    source: ENVIRONMENT.LOGGER_REMOTE_SOURCE,
+    apiKey: ENVIRONMENT.LOGGER_API_KEY,
+  },
+  level: ENVIRONMENT.LOG_LEVEL,
+  mode: ENVIRONMENT.LOGGER_MODE,
+})
+server.use(async (req, res, next) => {
+  log('info', {
+    message: "",
+    path: "",
+    status: "",
+    user: ""
+  })
+  next()
+})
 
 const app = initServer()
 const router = app.router(adminContract, {
