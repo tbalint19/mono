@@ -1,0 +1,16 @@
+{
+  "name": "@logger/middleware",
+  "private": true,
+  "version": "1.0.0",
+  "main": "out/index.js",
+  "types": "out/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@logger/log": "*"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0"
+  }
+}

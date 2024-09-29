@@ -1,6 +1,6 @@
-type LogLevel = 'error' | 'info'
+export type LogLevel = 'error' | 'info'
 
-type Config = {
+export type Config = {
   mode: 'combined' | 'local' | 'remote'
   remote: {
     source: string
@@ -9,7 +9,7 @@ type Config = {
   level: 'none' | 'error' | 'all'
 }
 
-type LogMessage = {
+export type LogMessage = {
   user?: string
   path?: string
   status?: string
