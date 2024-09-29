@@ -30,9 +30,9 @@ export const getIdToken = async (config: ProviderConfig, code: string) => {
     },
     body: JSON.stringify({
       code,
-      client_id: "",
-      client_secret: "",
-      redirect_uri: "",
+      client_id: config.clientId,
+      client_secret: config.clientSecret,
+      redirect_uri: config.redirectUri,
       scope: 'openid email profile',
       grant_type: 'authorization_code',
     })
