@@ -1,2 +1,20 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script lang="ts">
+  import { Modal, clickText, copyOnClick } from '@ui/lib'
+
+  let isOpen = $state(false)
+</script>
+
+<main>
+  {#if isOpen}
+  <Modal onclickout={() => isOpen = true}>
+    <div class="card bg-primary text-primary-content">
+      <p>Hello lib!</p>
+      <p use:copyOnClick use:clickText={{ text: "Copied!", durationInMillis: 3000 }}>
+        Demo text to copy
+      </p>
+    </div>
+  </Modal>
+  {/if}
+</main>
+
+
