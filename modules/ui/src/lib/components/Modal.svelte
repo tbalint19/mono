@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onDestroy, onMount } from 'svelte'
+  import "./index.css";
   import type { Snippet } from 'svelte'
   import { fly } from 'svelte/transition'
   import { fade } from 'svelte/transition'

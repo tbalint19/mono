@@ -5,8 +5,9 @@
 </script>
 
 <main>
+  <button onclick={() => isOpen = true}>Open</button>
   {#if isOpen}
-  <Modal onclickout={() => isOpen = true}>
+  <Modal onclickout={() => isOpen = false}>
     <div class="card bg-primary text-primary-content">
       <p>Hello lib!</p>
       <p use:copyOnClick use:clickText={{ text: "Copied!", durationInMillis: 3000 }}>
