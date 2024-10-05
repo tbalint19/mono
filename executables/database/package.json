@@ -5,7 +5,8 @@
   "scripts": {
     "generate": "drizzle-kit generate",
     "prepare": "drizzle-kit generate --custom",
-    "migrate": "ts-node src/index.ts"
+    "migrate": "ts-node src/index.ts",
+    "test-setup": "NODE_ENV=test ts-node src/index.ts"
   },
   "dependencies": {
     "@domain/models": "*",
