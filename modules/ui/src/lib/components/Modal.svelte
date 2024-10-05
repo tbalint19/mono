@@ -5,12 +5,14 @@
   import { fade } from 'svelte/transition'
 
   type Props = {
+    class?: string
     onclickout: () => void
     children: Snippet
   }
   const {
     onclickout,
     children,
+    class: bgClass,
   }: Props = $props()
 
   $effect(() => {
@@ -33,7 +35,7 @@
     <!-- svelte-ignore event_directive_deprecated -->
     <div
       transition:fade={{ duration: 200 }}
-      class="absolute left-0 top-0 h-full w-screen bg-base-100 opacity-90"
+      class={`absolute left-0 top-0 h-full w-screen ${bgClass || ''}`}
       on:click={onclickout}
     />
   </div>

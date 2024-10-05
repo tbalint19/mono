@@ -1,0 +1,45 @@
+version: '3.9'
+
+services:
+
+  db:
+    image: postgres
+    restart: always
+    volumes:
+      - type: volume
+        target: /database
+    environment:
+      POSTGRES_DB: ${DATABASE_NAME}
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+    networks:
+      - devlocalnetwork
+    ports:
+      - ${DATABASE_PORT}:5432
+
+  testdb:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: ${TEST_DATABASE_NAME}
+      POSTGRES_USER: ${TEST_DATABASE_USER}
+      POSTGRES_PASSWORD: ${TEST_DATABASE_PASSWORD}
+    networks:
+      - devlocalnetwork
+    ports:
+      - ${TEST_DATABASE_PORT}:5432
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${DATABASE_ADMIN_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${DATABASE_ADMIN_PASSWORD}
+    networks:
+      - devlocalnetwork
+    ports:
+      - 8080:80
+
+networks:
+  devlocalnetwork:
+      driver: bridge

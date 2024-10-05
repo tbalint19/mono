@@ -2,8 +2,20 @@
   "name": "database",
   "version": "1.0.0",
   "main": "src/index.ts",
+  "scripts": {
+    "generate": "drizzle-kit generate",
+    "prepare": "drizzle-kit generate --custom",
+    "migrate": "ts-node src/index.ts"
+  },
+  "dependencies": {
+    "@domain/models": "*",
+    "dotenv": "^16.4.5",
+    "drizzle-orm": "^0.33.0",
+    "postgres": "^3.4.4"
+  },
   "devDependencies": {
     "@types/pg": "^8.11.10",
-    "drizzle-kit": "^0.24.2"
+    "drizzle-kit": "^0.24.2",
+    "ts-node": "^10.9.2"
   }
 }
