@@ -5,50 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1728157566967,
-      "tag": "0000_bumpy_phil_sheldon",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1728157727812,
-      "tag": "0001_watery_vulcan",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1728157760185,
-      "tag": "0002_tricky_ares",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "7",
-      "when": 1728159204814,
-      "tag": "0003_early_morlocks",
-      "breakpoints": true
-    },
-    {
-      "idx": 4,
-      "version": "7",
-      "when": 1728159273270,
-      "tag": "0004_little_omega_flight",
-      "breakpoints": true
-    },
-    {
-      "idx": 5,
-      "version": "7",
-      "when": 1728159435804,
-      "tag": "0005_motionless_norrin_radd",
-      "breakpoints": true
-    },
-    {
-      "idx": 6,
-      "version": "7",
-      "when": 1728159486569,
-      "tag": "0006_zippy_shinobi_shaw",
+      "when": 1728159922164,
+      "tag": "0000_cool_loa",
       "breakpoints": true
     }
   ]
