@@ -1,6 +1,11 @@
 # DATABASE
 
-## Start DB
+## Create .env file
+
+- Copy .env.template -> .env
+- DONE (default values can stay as is)
+
+## Start DB with test DB and admin tool (PgAdmin)
 
 ```bash
 # monorepo/executables/database
@@ -66,7 +71,7 @@ npm run migrate
 - Use PgAdmin to check tables / metadata table
 - Repeat...
 
-## Stop database
+## Stop database (if no longer needed)
 
 ```bash
 # monorepo/executables/database
