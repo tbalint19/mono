@@ -1,5 +1,0 @@
-CREATE TABLE IF NOT EXISTS "APP_USERS" (
-	"ID" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
-	"USERNAME" text,
-	"DATA" json
-);

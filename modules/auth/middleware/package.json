@@ -10,7 +10,6 @@
   "dependencies": {
     "@utils/jwt": "*",
     "@utils/safe-fetch": "*",
-    "@auth/contract": "*",
     "@ts-rest/core": "^3.51.0",
     "express": "^4.21.0",
     "jsonwebtoken": "^9.0.2",

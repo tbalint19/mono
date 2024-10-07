@@ -1,12 +1,12 @@
 export type LogLevel = 'error' | 'info'
 
 export type Config = {
-  mode: 'combined' | 'local' | 'remote'
+  mode?: 'local' | 'combined' | 'remote'
   remote: {
-    source: string
-    apiKey: string
+    source?: string
+    apiKey?: string
   }
-  level: 'none' | 'error' | 'all'
+  level?: 'none' | 'error' | 'all'
 }
 
 export type LogMessage = {
@@ -16,9 +16,11 @@ export type LogMessage = {
   message: string
 }
 
-export const createLogger = (config: Config) => {
+export const createLogger = (config: Config = { level: 'all', mode: 'local', remote: { } }) => {
 
   const remoteLog = async (level: LogLevel, log: LogMessage) => {
+    if (!config.remote.apiKey || !config.remote.source)
+      return console.log(`⛔️ --- REMOTE LOGGER SOURCE NOT CONFIGURED --- ⛔️`)
     try {
       await fetch(`https://api.logflare.app/logs/json?source=${config.remote.source}`, {
         headers: {

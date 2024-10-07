@@ -8,8 +8,8 @@ const ENVIRONMENT = z.object({
   JW_EXPIRATION: z.string(),
   LOG_LEVEL: z.union([ z.literal("none"), z.literal("error"), z.literal("all") ]),
   LOGGER_MODE: z.union([ z.literal("local"), z.literal("remote"), z.literal("combined") ]),
-  LOGGER_REMOTE_SOURCE: z.string(),
-  LOGGER_API_KEY: z.string(),
+  LOGGER_REMOTE_SOURCE: z.string().optional(),
+  LOGGER_API_KEY: z.string().optional(),
 }).parse(process.env)
 
 export default ENVIRONMENT

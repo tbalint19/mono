@@ -1,8 +1,16 @@
-import { json, pgTable, text, uuid } from "drizzle-orm/pg-core";
+import { json, pgTable, text, uuid, timestamp } from "drizzle-orm/pg-core";
 import type { UserData } from "./documents";
 
-export const users = pgTable("APP_USERS", {
+const defaultColumns = {
   id: uuid("ID").primaryKey().defaultRandom(),
+  createdAt: timestamp("CREATED_AT").defaultNow(),
+  updatedAt: timestamp("UPDATED_AT").defaultNow().$onUpdate(() => new Date()),
+}
+
+export const user = pgTable("APP_USER", {
+  openId: text("OPEN_ID").unique(),
   username: text("USERNAME"),
-  data: json("DATA").$type<UserData>()
+  email: text("EMAIL"),
+  data: json("DATA").$type<UserData>(),
+  ...defaultColumns,
 })

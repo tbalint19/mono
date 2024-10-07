@@ -1,10 +1,12 @@
+import "dotenv/config"
+import "express-async-errors"
 import { createExpressEndpoints, initServer } from '@ts-rest/express'
 import express from 'express'
 import { adminContract } from '@domain/contracts'
 import { authContract } from '@auth/contract'
 import { authMiddleware, authRouter } from './middleware/auth'
 import { loggerMiddleware } from './middleware/logger'
-import { users } from '@domain/models'
+import { http401 } from "./middleware/auth"
 
 const server = express()
 server.use(express.json())
@@ -13,9 +15,10 @@ server.use(loggerMiddleware)
 
 const app = initServer()
 const router = app.router(adminContract, {
-  createDemo: async ({ body, headers, req }) => {
-    console.log(req.user)
-    return { status: 200, body: { greeting: "" } }
+  createDemo: async ({ req }) => {
+    if (!req.user)
+      return http401()
+    return { status: 200, body: { greeting: "welcome" } }
   }
 })
 
