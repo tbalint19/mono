@@ -8,6 +8,7 @@
     "build": "tsc"
   },
   "dependencies": {
+    "@auth/contract": "*",
     "@utils/jwt": "*",
     "@utils/safe-fetch": "*",
     "@ts-rest/core": "^3.51.0",

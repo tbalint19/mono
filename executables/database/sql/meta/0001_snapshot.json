@@ -1,0 +1,79 @@
+{
+  "id": "76b57c31-50e4-4609-8ef0-b74d5cc3fb3e",
+  "prevId": "32bb4318-5696-403c-9e8e-25bc5365174e",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.APP_USER": {
+      "name": "APP_USER",
+      "schema": "",
+      "columns": {
+        "OPEN_ID": {
+          "name": "OPEN_ID",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "USERNAME": {
+          "name": "USERNAME",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "EMAIL": {
+          "name": "EMAIL",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DATA": {
+          "name": "DATA",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ID": {
+          "name": "ID",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "CREATED_AT": {
+          "name": "CREATED_AT",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "UPDATED_AT": {
+          "name": "UPDATED_AT",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "APP_USER_OPEN_ID_unique": {
+          "name": "APP_USER_OPEN_ID_unique",
+          "columns": [
+            "OPEN_ID"
+          ],
+          "nullsNotDistinct": false
+        }
+      }
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "sequences": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

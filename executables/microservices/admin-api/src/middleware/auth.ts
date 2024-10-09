@@ -6,6 +6,7 @@ import { eq } from "drizzle-orm"
 
 const { authMiddleware, authRouter } = createAuthMiddleware({
   provider: {
+    endpoint: ENVIRONMENT.TOKEN_URL,
     clientId: ENVIRONMENT.CLIENT_ID,
     clientSecret: ENVIRONMENT.CLIENT_SECRET,
     redirectUri: ENVIRONMENT.REDIRECT_URI,

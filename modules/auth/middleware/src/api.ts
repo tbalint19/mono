@@ -3,6 +3,7 @@ import { safeFetch } from '@utils/safe-fetch'
 import { z } from 'zod'
 
 export type ProviderConfig = {
+  endpoint: string
   clientId: string
   clientSecret: string
   redirectUri: string
@@ -22,7 +23,7 @@ export type IdTokenPayload = z.infer<typeof IdTokenPayloadSchema>
 const { decode } = jwt(IdTokenPayloadSchema)
 
 export const getIdToken = async (config: ProviderConfig, code: string) => {
-  const url = ""
+  const url = config.endpoint
   const response = await safeFetch(ProviderResponseSchema, url, {
     method: "POST",
     headers: {

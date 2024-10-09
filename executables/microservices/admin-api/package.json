@@ -7,12 +7,6 @@
     "start": "node --env-file=.env out/index.cjs"
   },
   "devDependencies": {
-    "@auth/contract": "*",
-    "@auth/middleware": "*",
-    "@domain/contracts": "*",
-    "@domain/models": "*",
-    "@logger/log": "*",
-    "@logger/middleware": "*",
     "@types/express": "^5.0.0",
     "@types/node": "^20.11.17",
     "dotenv": "^16.4.5",
@@ -23,6 +17,12 @@
     "typescript": "^5.6.2"
   },
   "dependencies": {
+    "@auth/contract": "*",
+    "@auth/middleware": "*",
+    "@domain/contracts": "*",
+    "@domain/models": "*",
+    "@logger/log": "*",
+    "@logger/middleware": "*",
     "@ts-rest/express": "^3.51.0",
     "express": "^4.21.0",
     "express-async-errors": "^3.1.1"

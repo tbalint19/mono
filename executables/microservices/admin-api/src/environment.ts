@@ -1,6 +1,7 @@
 import { z } from 'zod'
 
 const ENVIRONMENT = z.object({
+  TOKEN_URL: z.string(),
   CLIENT_ID: z.string(),
   CLIENT_SECRET: z.string(),
   REDIRECT_URI: z.string(),

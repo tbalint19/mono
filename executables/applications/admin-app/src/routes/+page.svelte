@@ -1,21 +1,15 @@
 <script lang="ts">
-  import { Modal, clickText, copyOnClick } from '@ui/lib'
-
-  let isOpen = $state(false)
+import ENVIRONMENT from "../environment";
+const authUrl = new URL(ENVIRONMENT.VITE_TOKEN_URL)
+authUrl.searchParams.set('client_id', ENVIRONMENT.VITE_CLIENT_ID)
+authUrl.searchParams.set('redirect_uri', ENVIRONMENT.VITE_REDIRECT_URI)
+authUrl.searchParams.set('response_type', 'code')
+authUrl.searchParams.set('prompt', 'login')
+authUrl.searchParams.set('scope', 'openid email')
 </script>
 
 <main>
-  <button onclick={() => isOpen = true}>Open</button>
-  {#if isOpen}
-  <Modal onclickout={() => isOpen = false}>
-    <div class="card bg-primary text-primary-content">
-      <p>Hello lib!</p>
-      <p use:copyOnClick use:clickText={{ text: "Copied!", durationInMillis: 3000 }}>
-        Demo text to copy
-      </p>
-    </div>
-  </Modal>
-  {/if}
+  <a href={authUrl.toString()}>Login</a>
 </main>
 
 
