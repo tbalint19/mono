@@ -7,7 +7,7 @@ const ENVIRONMENT = z.object({
   REDIRECT_URI: z.string(),
 
   JWT_SECRET: z.string(),
-  JW_EXPIRATION: z.string(),
+  JWT_EXPIRATION: z.string(),
   
   LOG_LEVEL: z.union([ z.literal("none"), z.literal("error"), z.literal("all") ]),
   LOGGER_MODE: z.union([ z.literal("local"), z.literal("remote"), z.literal("combined") ]),

@@ -11,7 +11,7 @@ export const createLoggerMiddleware = (config: Config, getSessionUser: (request:
     const requestTime = new Date()
     log("info", {
       message: `Request#${requestId}@${requestTime.toISOString()}`,
-      path: request.url,
+      path: `${request.method} -> ${request.url}`,
       user,
     })
     response.on('finish', () => {
@@ -19,7 +19,7 @@ export const createLoggerMiddleware = (config: Config, getSessionUser: (request:
       const timeElapsed = responseTime.getMilliseconds() - requestTime.getMilliseconds()
       log("info", {
         message: `Response#${requestId}@${responseTime.toISOString()} (${timeElapsed}ms)`,
-        path: request.url,
+        path: `${request.url} ->`,
         user,
         status: `${response.statusCode}`
       })

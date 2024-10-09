@@ -6,8 +6,8 @@ import json from '@rollup/plugin-json';
 export default {
   input: 'src/index.ts',
   output: {
-    file: 'out/index.cjs',
-    format: 'cjs'
+    file: 'out/index.mjs',
+    format: 'es'
   },
   plugins: [
     json(),

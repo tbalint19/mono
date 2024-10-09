@@ -15,7 +15,6 @@ const ProviderResponseSchema = z.object({
 
 const IdTokenPayloadSchema = z.object({
   sub: z.string(),
-  name: z.string(),
   email: z.string(),
 })
 export type IdTokenPayload = z.infer<typeof IdTokenPayloadSchema>
@@ -24,19 +23,21 @@ const { decode } = jwt(IdTokenPayloadSchema)
 
 export const getIdToken = async (config: ProviderConfig, code: string) => {
   const url = config.endpoint
+
+  const params = new URLSearchParams()
+  params.append('code', code)
+  params.append('client_id', config.clientId)
+  params.append('client_secret', config.clientSecret)
+  params.append('redirect_uri', config.redirectUri)
+  params.append('grant_type', 'authorization_code')
+  params.append('scope', 'openid email profile')
+
   const response = await safeFetch(ProviderResponseSchema, url, {
     method: "POST",
     headers: {
-      'Content-Type': 'application/JSON'
+      'Content-Type': 'application/x-www-form-urlencoded'
     },
-    body: JSON.stringify({
-      code,
-      client_id: config.clientId,
-      client_secret: config.clientSecret,
-      redirect_uri: config.redirectUri,
-      scope: 'openid email profile',
-      grant_type: 'authorization_code',
-    })
+    body: params.toString()
   })
   if (!response.success)
     return null

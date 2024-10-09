@@ -7,8 +7,10 @@ import { authContract } from '@auth/contract'
 import { authMiddleware, authRouter } from './middleware/auth'
 import { loggerMiddleware } from './middleware/logger'
 import { http401 } from "./middleware/auth"
+import cors from "cors"
 
 const server = express()
+server.use(cors())
 server.use(express.json())
 server.use(authMiddleware)
 server.use(loggerMiddleware)

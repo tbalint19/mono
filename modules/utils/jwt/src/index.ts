@@ -20,6 +20,8 @@ export const jwt = <const Schema extends z.ZodTypeAny>(schema: Schema) => {
   const safeSign = (payload: z.infer<typeof schema>) =>
     new Promise((resolve: (token: string | null) => void, reject) =>
       sign(payload, secret, config, (error, token) => {
+        console.log(secret)
+        console.log(config)
         if (error)
           return resolve(null)
         if (!token)
@@ -37,7 +39,7 @@ export const jwt = <const Schema extends z.ZodTypeAny>(schema: Schema) => {
 
   const configure = (options: { secret: string, expiresIn: string }) => {
     secret = options.secret
-    config = { expiresIn: config.expiresIn }
+    config = { expiresIn: options.expiresIn }
     return {
       sign: safeSign,
       verify: safeVerify,

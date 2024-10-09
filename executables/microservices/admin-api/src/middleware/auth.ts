@@ -13,7 +13,7 @@ const { authMiddleware, authRouter } = createAuthMiddleware({
   },
   jwt: {
     secret: ENVIRONMENT.JWT_SECRET,
-    expire: ENVIRONMENT.JW_EXPIRATION,
+    expire: ENVIRONMENT.JWT_EXPIRATION,
   }
 }, async (idTokenPayload) => {
   const selectResult = await database.select().from(user).where(eq(user.openId, idTokenPayload.sub)).catch()

@@ -29,7 +29,6 @@ type Session = z.infer<typeof SessionSchema>
 
 export const createAuthMiddleware = (config: Config, domainLogin: (idTokenPayload: IdTokenPayload) => Promise<Session | null>) => {
   const server = initServer()
-
   const authMiddleware = async (request: Request, response: Response, next: NextFunction) => {
     const authToken = request.headers['authorization']
     if (!authToken)
