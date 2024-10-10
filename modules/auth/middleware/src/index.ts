@@ -68,6 +68,9 @@ export const createAuthMiddleware = (config: Config, domainLogin: (idTokenPayloa
   }
 }
 
+export const http401 = () => ({ status: 401, body: null } as const)
+export const http403 = () => ({ status: 403, body: null } as const)
+
 declare global {
   namespace Express {
     interface Request {

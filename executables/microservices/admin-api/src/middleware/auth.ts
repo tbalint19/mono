@@ -33,12 +33,7 @@ const { authMiddleware, authRouter } = createAuthMiddleware({
   return { id: newUser.id }
 })
 
-const http401 = () => ({ status: 401, body: null } as const)
-const http403 = () => ({ status: 403, body: null } as const)
-
 export {
   authMiddleware,
   authRouter,
-  http401,
-  http403,
 }
