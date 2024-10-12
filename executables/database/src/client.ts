@@ -19,6 +19,6 @@ const port = process.env.NODE_ENV === "test" ?
 if (!host || !database || !user || !password)
   throw new Error("No connection string specified")
 
-const connectionString = `postgresql://${user}:${password}@${host}:${port}/${database}`
+const connectionString = `postgresql://${user}:${password}@${host}${port?`:${port}`:""}/${database}`
 
 export const migrationClient = postgres(connectionString, { max: 1 })
