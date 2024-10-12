@@ -21,13 +21,8 @@ const IdTokenPayloadSchema = z.object({
 })
 type IdTokenPayload = z.infer<typeof IdTokenPayloadSchema>
 
-const SessionSchema = z.object({
-  id: z.string(),
-  permissions: z.unknown().optional(),
-})
-type Session = z.infer<typeof SessionSchema>
-
-export const createAuthMiddleware = (config: Config, domainLogin: (idTokenPayload: IdTokenPayload) => Promise<Session | null>) => {
+export const createAuthMiddleware = <SessionSchemaType extends z.ZodTypeAny>(
+  config: Config, SessionSchema: SessionSchemaType, domainLogin: (idTokenPayload: IdTokenPayload) => Promise<z.infer<typeof SessionSchema> | null>) => {
   const server = initServer()
   const authMiddleware = async (request: Request, response: Response, next: NextFunction) => {
     const authToken = request.headers['authorization']
@@ -43,6 +38,15 @@ export const createAuthMiddleware = (config: Config, domainLogin: (idTokenPayloa
 
     request.user = sessionUser
     next()
+  }
+
+  const session = (req: Request): z.infer<typeof SessionSchema> | null => {
+    if (!req.user)
+      return null
+    const result = SessionSchema.safeParse(req.user)
+    if (!result.success)
+      return null
+    return result.data
   }
   
   const authRouter = server.router(authContract, {
@@ -64,6 +68,7 @@ export const createAuthMiddleware = (config: Config, domainLogin: (idTokenPayloa
 
   return {
     authMiddleware,
+    session,
     authRouter,
   }
 }
@@ -74,7 +79,7 @@ export const http403 = () => ({ status: 403, body: null } as const)
 declare global {
   namespace Express {
     interface Request {
-      user?: Session
+      user?: unknown
     }
   }
 }

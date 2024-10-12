@@ -14,6 +14,7 @@ export const createLoggerMiddleware = (config: Config, getSessionUser: (request:
       path: `${request.method} -> ${request.url}`,
       user,
     })
+    response.on
     response.on('finish', () => {
       const responseTime = new Date()
       const timeElapsed = responseTime.getMilliseconds() - requestTime.getMilliseconds()

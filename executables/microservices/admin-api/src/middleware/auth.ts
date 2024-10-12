@@ -3,8 +3,13 @@ import { createAuthMiddleware } from "@auth/middleware"
 import { database } from "../database"
 import { user } from "@domain/models"
 import { eq } from "drizzle-orm"
+import { z } from "zod"
 
-const { authMiddleware, authRouter } = createAuthMiddleware({
+const SessionSchema = z.object({
+  id: z.string(),
+})
+
+const { authMiddleware, authRouter, session, } = createAuthMiddleware({
   provider: {
     endpoint: ENVIRONMENT.TOKEN_URL,
     clientId: ENVIRONMENT.CLIENT_ID,
@@ -15,7 +20,7 @@ const { authMiddleware, authRouter } = createAuthMiddleware({
     secret: ENVIRONMENT.JWT_SECRET,
     expire: ENVIRONMENT.JWT_EXPIRATION,
   }
-}, async (idTokenPayload) => {
+}, SessionSchema, async (idTokenPayload) => {
   const selectResult = await database.select().from(user).where(eq(user.openId, idTokenPayload.sub)).catch()
   if (!selectResult)
     return null
@@ -35,5 +40,6 @@ const { authMiddleware, authRouter } = createAuthMiddleware({
 
 export {
   authMiddleware,
+  session,
   authRouter,
 }

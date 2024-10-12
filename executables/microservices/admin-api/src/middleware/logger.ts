@@ -1,5 +1,6 @@
 import ENVIRONMENT from "../environment";
 import { createLoggerMiddleware } from "@logger/middleware";
+import { session } from "./auth";
 
 export const loggerMiddleware = createLoggerMiddleware({
   remote: {
@@ -8,4 +9,4 @@ export const loggerMiddleware = createLoggerMiddleware({
   },
   level: ENVIRONMENT.LOG_LEVEL,
   mode: ENVIRONMENT.LOGGER_MODE,
-}, (request) => request.user?.id || "anonymus")
+}, (request) => session(request)?.id || "anonymus")

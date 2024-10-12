@@ -8,13 +8,6 @@
       "when": 1728494652436,
       "tag": "0000_flowery_vin_gonzales",
       "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1728495075443,
-      "tag": "0001_icy_ma_gnuci",
-      "breakpoints": true
     }
   ]
 }
