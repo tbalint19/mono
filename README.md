@@ -3,7 +3,7 @@
 ```bash
 npm i
 
-# use for easier script execution
+# use for easier script selection and execution (from workspace root)
 npx cli   # arrows and enter to navigate and execute
 # CTRL+C to exit
 ```
