@@ -6,6 +6,6 @@
     "start": "docker-compose up -d",
     "debug": "docker-compose logs -f",
     "stop": "docker-compose down",
-    "reset": "docker-compose down -d"
+    "reset": "docker-compose down -v"
   }
 }
