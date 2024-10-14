@@ -6,7 +6,11 @@
     "generate": "drizzle-kit generate",
     "prepare": "drizzle-kit generate --custom",
     "migrate": "ts-node src/index.ts",
-    "test-setup": "NODE_ENV=test ts-node src/index.ts"
+    "test-setup": "NODE_ENV=test ts-node src/index.ts",
+    "start": "docker-compose up -d",
+    "debug": "docker-compose logs -f",
+    "stop": "docker-compose down",
+    "reset": "docker-compose down -d"
   },
   "dependencies": {
     "@domain/models": "*",

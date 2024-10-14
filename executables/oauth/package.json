@@ -1,0 +1,11 @@
+{
+  "name": "oauth",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "docker-compose up -d",
+    "debug": "docker-compose logs -f",
+    "stop": "docker-compose down",
+    "reset": "docker-compose down -d"
+  }
+}

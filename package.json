@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "private": true,
   "packageManager": "^npm@10.8.2",
-  "scripts": {
-    "cli": "tsx index.ts"
-  },
   "workspaces": [
     "domain/**",
     "executables/**",
@@ -19,6 +16,7 @@
     "@types/node": "^20.11.17",
     "drizzle-kit": "^0.24.2",
     "rollup": "^4.21.3",
+    "tb19wscli": "^1.0.7",
     "tslib": "^2.7.0",
     "tsx": "^4.7.1",
     "typescript": "^5.6.2"
