@@ -1,5 +1,11 @@
 # DEV SETUP
 
+```bash
+# use for easier script execution
+npx cli   # arrows and enter to navigate and execute
+# CTRL+C to exit
+```
+
 1. Start database, test database and admin tool (PgAdmin)
   - -> exetcutables/database/README.md
 
