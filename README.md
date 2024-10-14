@@ -1,6 +1,8 @@
 # DEV SETUP
 
 ```bash
+npm i
+
 # use for easier script execution
 npx cli   # arrows and enter to navigate and execute
 # CTRL+C to exit
