@@ -2,7 +2,6 @@
   "name": "admin-api",
   "type": "module",
   "scripts": {
-    "dev": "tsx watch src/index.ts",
     "build": "rollup -c",
     "start": "node --env-file=.env out/index.mjs"
   },
