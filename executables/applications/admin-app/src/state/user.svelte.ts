@@ -4,8 +4,8 @@ import { getContext, setContext } from "svelte"
 import ENVIRONMENT from "../environment";
 
 export type LogoutConfig = 
-  | { thirdPartyMode: true, localLogoutPath: string }
-  | { thirdPartyMode: false, logoutUrl: string, postLogoutUrl?: string }
+  | { thirdPartyMode: "true", localLogoutPath: string }
+  | { thirdPartyMode: "false", logoutUrl: string, postLogoutUrl?: string }
 
 export type Config = {
   authUrl: string
@@ -47,7 +47,7 @@ const userStoreFactory = <UserSchema extends z.ZodTypeAny>(schema: UserSchema, c
     }
   
     logout() {
-      if (config.thirdPartyMode) {
+      if (config.thirdPartyMode === "true") {
         window.location.href = config.localLogoutPath
         return
       }
@@ -99,7 +99,7 @@ const UserSchema = z.object({
   id: z.string()
 })
 
-const config: Config = ENVIRONMENT.VITE_OPENID_THIRD_PARTY_MODE ? {
+const config: Config = ENVIRONMENT.VITE_OPENID_THIRD_PARTY_MODE === "true" ? {
   thirdPartyMode: ENVIRONMENT.VITE_OPENID_THIRD_PARTY_MODE,
   authUrl: ENVIRONMENT.VITE_AUTH_URL,
   clientId: ENVIRONMENT.VITE_CLIENT_ID,
