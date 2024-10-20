@@ -1,23 +1,27 @@
 <script lang="ts">
-import { client } from "$lib/api";
+import { getNetworkStore } from "../state/network.svelte";
+import { getUserStore } from "../state/user.svelte";
 
-import ENVIRONMENT from "../environment";
-const authUrl = new URL(ENVIRONMENT.VITE_TOKEN_URL)
-authUrl.searchParams.set('client_id', ENVIRONMENT.VITE_CLIENT_ID)
-authUrl.searchParams.set('redirect_uri', ENVIRONMENT.VITE_REDIRECT_URI)
-authUrl.searchParams.set('response_type', 'code')
-authUrl.searchParams.set('prompt', 'login')
-authUrl.searchParams.set('scope', 'openid email profile')
-
-const demo = async () => {
-  const response = await client.createDemo({ body: { msg: "Yooo" } })
-  console.log(response)
-}
+const network = getNetworkStore()
+const user = getUserStore()
 </script>
 
 <main>
-  <a href={authUrl.toString()}>Login</a>
-  <button onclick={demo}>Demo</button>
+  {#if user.data}
+    <p>{ user.data.id }</p>
+    <button class="btn btn-error" onclick={user.logout}>Logout</button>
+  {:else}
+    <p>No user</p>
+    <button class="btn btn-primary" onclick={user.auth}>Auth</button>
+  {/if}
+
+  {#if network.state === 'online'}
+    <p>Online</p>
+  {:else if network.state === 'connecting'}
+    <p>Connecting...</p>
+  {:else}
+    <p>Offline</p>
+  {/if}
 </main>
 
 

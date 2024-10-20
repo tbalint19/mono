@@ -3,15 +3,12 @@ import { z } from "zod"
 
 const c = initContract()
 export const clientContract = c.router({
-  createDemo: {
-    method: 'POST',
-    path: '/api/demo',
-    body: z.object({
-      msg: z.string()
-    }),
+  ping: {
+    method: 'GET',
+    path: '/api/ping',
     responses: {
       200: z.object({
-        greeting: z.string()
+        message: z.literal("pong")
       })
     }
   }

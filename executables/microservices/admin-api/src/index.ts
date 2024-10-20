@@ -6,7 +6,6 @@ import { adminContract } from '@domain/contracts'
 import { authContract } from '@auth/contract'
 import { authMiddleware, authRouter } from './middleware/auth'
 import { loggerMiddleware } from './middleware/logger'
-import { http401 } from "@auth/middleware"
 import cors from "cors"
 
 const server = express()
@@ -17,10 +16,8 @@ server.use(loggerMiddleware)
 
 const app = initServer()
 const router = app.router(adminContract, {
-  createDemo: async ({ req }) => {
-    if (!req.user)
-      return http401()
-    return { status: 200, body: { greeting: "welcome" } }
+  ping: async () => {
+    return { status: 200, body: { message: "pong" } }
   }
 })
 

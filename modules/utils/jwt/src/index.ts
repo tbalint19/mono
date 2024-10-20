@@ -1,5 +1,7 @@
-import { verify, sign, decode } from "jsonwebtoken"
+import jsonwebtoken from "jsonwebtoken"
 import { z } from 'zod'
+
+const { verify, sign, decode } = jsonwebtoken
 
 export const jwt = <const Schema extends z.ZodTypeAny>(schema: Schema) => {
 
@@ -20,8 +22,6 @@ export const jwt = <const Schema extends z.ZodTypeAny>(schema: Schema) => {
   const safeSign = (payload: z.infer<typeof schema>) =>
     new Promise((resolve: (token: string | null) => void, reject) =>
       sign(payload, secret, config, (error, token) => {
-        console.log(secret)
-        console.log(config)
         if (error)
           return resolve(null)
         if (!token)

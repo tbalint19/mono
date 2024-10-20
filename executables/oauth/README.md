@@ -31,6 +31,7 @@ You can technically add a database admin tool, just copy pgadmin section from _e
   - An initial "wizard" page should appear
   - Local instance, so email address can be any dummy email address
   - If for any reason you have given your own email address (why?) you should uncheck marketing emails
+  - You should use `admin@email.com` /// `password` - it is here in the document, you won't forget it
 - Create an application
   - Left sidebar -> Applications
   - Top right corner -> green plus icon button

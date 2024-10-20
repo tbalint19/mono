@@ -5,6 +5,7 @@ import { z } from 'zod'
 import { getIdToken } from './api';
 import { jwt } from '@utils/jwt'
 import { ProviderConfig } from './api';
+import { IdTokenPayload } from './api';
 
 type Config = {
   provider: ProviderConfig
@@ -13,13 +14,6 @@ type Config = {
     expire: string
   }
 }
-
-const IdTokenPayloadSchema = z.object({
-  sub: z.string(),
-  name: z.string().optional(),
-  email: z.string().optional(),
-})
-type IdTokenPayload = z.infer<typeof IdTokenPayloadSchema>
 
 export const createAuthMiddleware = <SessionSchemaType extends z.ZodTypeAny>(
   config: Config, SessionSchema: SessionSchemaType, domainLogin: (idTokenPayload: IdTokenPayload) => Promise<z.infer<typeof SessionSchema> | null>) => {

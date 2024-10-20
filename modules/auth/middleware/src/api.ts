@@ -15,7 +15,8 @@ const ProviderResponseSchema = z.object({
 
 const IdTokenPayloadSchema = z.object({
   sub: z.string(),
-  email: z.string(),
+  email: z.string().optional(),
+  preferred_username: z.string().optional(),
 })
 export type IdTokenPayload = z.infer<typeof IdTokenPayloadSchema>
 
